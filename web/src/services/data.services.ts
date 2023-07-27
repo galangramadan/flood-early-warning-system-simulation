@@ -6,3 +6,9 @@ export const getData = async () => {
     return data;
   }
 };
+
+export const resetData = async () => {
+  await axios.put(`${import.meta.env.VITE_API_URL}`, {
+    status: "aman",
+  });
+};

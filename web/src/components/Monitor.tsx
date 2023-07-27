@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getData } from "../services/data.services";
+import { getData, resetData } from "../services/data.services";
 
 interface Data {
   id: string;
@@ -32,6 +32,10 @@ const Monitor = () => {
     }
   }, [data, audio]);
 
+  const handleOnClick = () => {
+    resetData();
+  };
+
   return (
     <div
       className={`w-screen ${
@@ -41,7 +45,10 @@ const Monitor = () => {
       <div className="container mx-auto h-screen flex flex-col justify-center items-center gap-10">
         <h1 className="text-5xl font-semibold">Status</h1>
         {data.status === "bahaya" ? (
-          <p className="text-5xl font-semibold">Bahaya</p>
+          <>
+            <p className="text-5xl font-semibold">Bahaya</p>
+            <button onClick={handleOnClick}>Reset</button>
+          </>
         ) : (
           <p className="text-5xl font-semibold">Aman</p>
         )}

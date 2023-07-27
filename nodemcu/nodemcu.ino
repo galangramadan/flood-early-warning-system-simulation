@@ -33,21 +33,19 @@ Serial.println(s1);
 if(WiFi.status()== WL_CONNECTED){
   WiFiClientSecure client;
   client.setInsecure();
-  HTTPClient https;
-  https.begin(client, serverName);
-  https.addHeader("Content-Type", "application/json");
-  
   if(s1>400){
     digitalWrite(relay1, LOW);
     Serial.println("hidup");
-    https.PUT("{\"status\":\"bahaya\"}");       
-    delay(5000);
+    HTTPClient https;
+    https.begin(client, serverName);
+    https.addHeader("Content-Type", "application/json");
+    https.PUT("{\"status\":\"bahaya\"}");      
+    delay(1000);
     } else {
     digitalWrite(relay1, HIGH);
-    Serial.println("mati");
-    https.PUT("{\"status\":\"aman\"}");          
-    delay(5000);
-    }
+    Serial.println("mati");     
+    delay(1000);
+    } 
   } else {
       Serial.println("WiFi Disconnected");
   }
