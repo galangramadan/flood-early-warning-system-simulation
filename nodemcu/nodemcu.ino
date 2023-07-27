@@ -41,11 +41,12 @@ if(WiFi.status()== WL_CONNECTED){
     digitalWrite(relay1, LOW);
     Serial.println("hidup");
     https.PUT("{\"status\":\"bahaya\"}");       
-    delay(1000);
+    delay(5000);
     } else {
     digitalWrite(relay1, HIGH);
-    Serial.println("mati");         
-    delay(1000);
+    Serial.println("mati");
+    https.PUT("{\"status\":\"aman\"}");          
+    delay(5000);
     }
   } else {
       Serial.println("WiFi Disconnected");

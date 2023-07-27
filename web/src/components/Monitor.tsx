@@ -19,7 +19,7 @@ const Monitor = () => {
           return;
         }
       });
-    }, 10000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [data]);
 
