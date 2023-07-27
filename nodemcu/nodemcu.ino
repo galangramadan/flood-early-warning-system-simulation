@@ -28,14 +28,17 @@ Serial.println("Timer set to 5 seconds (timerDelay variable), it will take 5 sec
 
 void loop(){
 int s1=analogRead(sensor_pin);
+int s2=analogRead(sensor_pin);
 Serial.println(s1);
+Serial.println(" | ");
+Serial.println(s2);
 
 if(WiFi.status()== WL_CONNECTED){
-  WiFiClientSecure client;
-  client.setInsecure();
   if(s1>400){
     digitalWrite(relay1, LOW);
     Serial.println("hidup");
+    WiFiClientSecure client;
+    client.setInsecure();
     HTTPClient https;
     https.begin(client, serverName);
     https.addHeader("Content-Type", "application/json");
